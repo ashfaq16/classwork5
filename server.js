@@ -1,6 +1,9 @@
   var http = require('http');
   var express = require('express');
   var app = express();
+  var bodyParser = require('body-parser');
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({extended:true}));
   var server = http.Server(app);
   
   
@@ -18,7 +21,6 @@
   
  app.post('/submit_user', function (req, res) {
     console.log(req.body);
-    res.send( ' Submitted Successfully!');
 });
 
  
