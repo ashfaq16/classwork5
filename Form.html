@@ -1,6 +1,38 @@
- <form>
-  User's name:<br>
-  <input type="text" name="firstname"><br>
-  Email Address:<br>
-  <input type="text" name="lastname">
-</form> 
+ <!DOCTYPE html>
+
+<html>
+<head>
+    
+    <title>User Form</title>
+</head>
+<body>
+    <form>
+        <h1>User deatils</h1>
+            <input type = "text" id ="name"/>
+            <input type = "email" id ="email"/>
+            <button id="submit">Submit</button>
+    </form>
+</body>
+<script
+			  src="https://code.jquery.com/jquery-3.3.1.js"
+			  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+			  crossorigin="anonymous">
+    
+</script>
+<script>
+    var user ={name:"",email:""};
+    $('#submit').click(function(){
+        user.name= $("#name").val();
+        user.email= $("#email").val();
+        $.ajax({
+            method:"POST",
+            url:"/submit_user",
+            data: user
+        }).done(function(response){
+            console.log(response);
+        }).fail(function(response){
+            console.log(response);
+        });
+    });
+</script>
+</html>

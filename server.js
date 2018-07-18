@@ -4,7 +4,11 @@
   var server = http.Server(app);
   
   
-  app.get('/', function(req, res){
+   app.get('/form', function(req, res){
+     res.sendFile(__dirname+'/Form.html');
+  });
+  
+  app.get('/about', function(req, res){
      res.sendFile(__dirname+'/about.html');
   });
   
@@ -12,9 +16,12 @@
      res.sendFile(__dirname+'/index.html');
   });
   
-    app.get('/', function(req, res){
-     res.sendFile(__dirname+'/Form.html');
-  });
+ app.post('/submit_user', function (req, res) {
+    console.log(req.body);
+    res.send( ' Submitted Successfully!');
+});
+
+ 
 
 server.listen(process.env.PORT, process.env.IP, function(){
     console.log('Server running');
